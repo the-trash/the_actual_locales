@@ -2,6 +2,12 @@
 
 Way to find and log alive localization keys into your i18n locale files
 
+### The Problem
+
+It can be difficult to find actual localization keys after months of maintenance of rails project
+
+### The Solution
+
 This gem collect all executed `I18n.translate` and `I18n.t` calls and dump it into YAML file at
 `#{Rails.root}/log/`
 
