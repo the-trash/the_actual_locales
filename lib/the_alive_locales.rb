@@ -1,6 +1,12 @@
 require "the_alive_locales/version"
 
 module TheAliveLocales
+  class Engine < ::Rails::Engine
+    config.after_initialize do
+      require "the_alive_locales/i18n_patch"
+    end
+  end
+
   def self.log_path locale
     "#{ Rails.root }/log/alive_locale.#{ locale }.yml"
   end
@@ -17,7 +23,7 @@ module TheAliveLocales
 
     # Read YAML
     # Create { 'en' => {} } if exception
-    locale_data = begin; YAML.load(log_content); rescue; {}; end
+    locale_data = (begin; YAML.load(log_content); rescue; {}; end) || {}
     locale_data[locale] = {} unless locale_data[locale]
 
     # Set base values
@@ -35,26 +41,5 @@ module TheAliveLocales
     i18n_log = File.open(log_path, 'w')
     i18n_log.write locale_data.to_yaml
     i18n_log.close
-  end
-
-  class Engine < ::Rails::Engine
-    initializer 'the-alive-locales.register' do
-      module I18n
-        def self.translate(*args)
-          tname = args.try :[], 0
-          _args = args.try :[], 1
-          scope = Array.wrap _args.try(:[],:scope) || _args.try(:[], 'scope')
-
-          key   = [ scope, tname ].flatten
-          value = super
-
-          TheAliveLocales.dump(locale.to_s, key, value)
-
-          value
-        end
-
-        self.singleton_class.send(:alias_method, :t, :translate)
-      end
-    end
   end
 end
