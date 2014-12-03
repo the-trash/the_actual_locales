@@ -8,7 +8,7 @@ module I18n
       key   = [ scope, tname ].flatten
       value = super
 
-      TheAliveLocales.dump(locale.to_s, key, value)
+      TheActualLocales.dump(locale.to_s, key, value)
 
       value
     end

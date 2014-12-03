@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'the_alive_locales/version'
+require 'the_actual_locales/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "the_alive_locales"
-  spec.version       = TheAliveLocales::VERSION
+  spec.name          = "the_actual_locales"
+  spec.version       = TheActualLocales::VERSION
   spec.authors       = ["Ilya N. Zykin"]
   spec.email         = ["zykin-ilya@ya.ru"]
-  spec.summary       = %q{Alive locales logger}
+  spec.summary       = %q{Actual locales logger}
   spec.description   = %q{Find required locales keys}
-  spec.homepage      = "https://github.com/the-teacher/the_alive_locales"
+  spec.homepage      = "https://github.com/the-teacher/the_actual_locales"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

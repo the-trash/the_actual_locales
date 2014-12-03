@@ -1,6 +1,6 @@
-## TheAliveLocales
+## TheActualLocales
 
-Way to find and log alive localization keys into your i18n locale files
+Way to find and log actual localization keys into your i18n locale files
 
 ### The Problem
 
@@ -15,7 +15,7 @@ This gem collect all executed `I18n.translate` and `I18n.t` calls and dump it in
 
 ```ruby
 group :development do
-  gem 'the_alive_locales', '~> 0.0.1'
+  gem 'the_actual_locales', '~> 0.0.1'
 end
 ```
 
@@ -30,6 +30,6 @@ bundle
 1. Install gem
 2. exec `rails s`
 2. Visit required pages with required locales
-3. Learn `/log/alive_locale.LOCALE_NAME.yml`
+3. Learn `/log/actual_locale.LOCALE_NAME.yml`
 
 #### MIT license
